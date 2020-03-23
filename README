@@ -1,0 +1,7 @@
+# Beamer theme for presentations in the HAW Hamburg style.
+
+An example document is in testPresentation.tex. More information can be found in beamerthemeHAW.sty.
+
+Changelog:
+2020-03-23 v1.0
+* initial version

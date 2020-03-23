@@ -1,0 +1,83 @@
+% See beamerthemeHAW.sty and LICENSE for license information
+
+\mode<presentation>
+
+\defbeamertemplate*{frametitle}{HAW official}
+{%
+	\vspace{.028\paperheight}
+	\usebeamercolor{palette primary}
+	\usebeamerfont{frametitle}
+
+	\parindent0mm \begin{minipage}[b][.12\paperheight][c]{.9\paperwidth}
+%	\MakeUppercase{\insertframetitle} % TODO Arial 22 bold
+    \insertframetitle
+    % Making frame titles uppercase is an issue. It is highly nontrivial to make the text uppercase, but not other commands (i.e. the frame option allowframebreaks breaks the compiling) or colors (i.e. \color{red} becomes \color{RED})
+	\end{minipage}
+}
+
+\newlength{\sidebarwidth}
+\setlength{\sidebarwidth}{5ex}
+\newlength{\footlinewidth}
+\setlength{\footlinewidth}{\dimexpr\paperwidth-2\sidebarwidth\relax}
+
+\newlength{\footlineheight}
+\setlength{\footlineheight}{11mm}
+\newlength{\footlinelinewidth}
+\setlength{\footlinelinewidth}{1pt}
+
+% I have no idea why it is 2\footlinelinewidth to match the full footline width with the width of the line + width of the minipages
+\newcommand{\footlineinnerheight}{\dimexpr\footlineheight-2\footlinelinewidth\relax}
+
+\setbeamertemplate{page number in head/foot}[framenumber]
+
+\defbeamertemplate*{footline}{HAW official}
+{%
+	\leavevmode
+	% frame number
+	\begin{beamercolorbox}[wd=\dimexpr\paperwidth-\sidebarwidth\relax,dp=.5\baselineskip]{footline}
+	\hspace{\fill}
+	%\usebeamercolor[fg]{page number in head/foot} % intentionally not used
+	\usebeamerfont{page number in head/foot}
+	\usebeamertemplate{page number in head/foot}
+	\end{beamercolorbox}
+	\newline
+	% margin left side
+	\begin{beamercolorbox}[wd=\sidebarwidth,ht=\footlineheight,sep=0ex]{footline}
+	\end{beamercolorbox}%
+	% main footline
+	\begin{beamercolorbox}[wd=\footlinewidth,ht=\footlineheight,sep=0ex]{footline}
+		% grey bar
+		\begin{beamercolorbox}[wd=\footlinewidth,ht=.5\footlinelinewidth,dp=.5\footlinelinewidth]{lower separation line foot}
+		\end{beamercolorbox}
+		\newline
+		% departement and author info
+		\begin{minipage}[b][\footlineinnerheight][c]{.4\footlinewidth}
+			{
+				\usebeamerfont{faculty in footer}
+				\insertinstitute
+			}
+			\newline
+			\insertauthor
+		\end{minipage}
+		\hspace*{\fill}
+		% logo
+		\begin{minipage}[b][\footlineinnerheight][c]{.3\footlinewidth}
+			\hfill
+			\insertlogo
+		\end{minipage}
+	\end{beamercolorbox}%
+	% margin right side
+	\begin{beamercolorbox}[wd=\sidebarwidth,ht=\footlineheight,sep=0ex]{footline}
+	\end{beamercolorbox}
+}
+
+\setbeamersize{text margin left=0pt}
+\setbeamersize{text margin right=0pt}
+\setbeamersize{sidebar width left=\sidebarwidth}
+\setbeamersize{sidebar width right=\sidebarwidth}
+\defbeamertemplate*{sidebar left}{HAW official}{}
+\defbeamertemplate*{sidebar right}{HAW official}{}
+
+\mode<all>
+
+\setbeamertemplate{navigation symbols}{}

@@ -1,0 +1,43 @@
+% See beamerthemeHAW.sty and LICENSE for license information
+
+\mode<presentation>
+
+\defbeamertemplate*{title page}{HAW official}
+{%
+	\begin{beamercolorbox}[ht=.65\paperheight,dp=.15\paperheight,left]{title}
+		\usebeamerfont{title}
+
+%		\MakeUppercase{\inserttitle} % same issue as in frametitle
+		\inserttitle
+
+		\vspace{\baselineskip}
+
+		\usebeamerfont{subtitle}
+		\insertsubtitle
+
+		\vspace{1cm}
+
+		\usebeamerfont{author}
+		\insertauthor
+
+		Hochschule für Angewandte Wissenschaften Hamburg
+
+		\insertdate
+	\end{beamercolorbox}
+
+	\hfill\includegraphics[width=4cm]{hawLogoTemporaryInverted}
+}
+
+
+
+\defbeamertemplate*{footnote}{HAW official}
+{%
+\footnotesize
+\noindent
+\insertfootnotemark\insertfootnotetext
+}
+
+\setbeamertemplate{blocks}[default]
+
+\mode
+<all>

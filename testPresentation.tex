@@ -1,0 +1,185 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern} % in later versions, the package shall (optionally) use fonts according to the official HAW (PowerPoint) template
+
+% These packages are not necessary for presentations in general,
+% only used in this example
+\usepackage{tikz}
+\usepackage{biblatex}
+\bibliography{testPresentation.bib}
+
+% Here we tell beamer to use the HAW theme.
+\usetheme{HAW}
+
+\title{Meine Präsentation}
+\subtitle{Zum Testen}
+\author{Lasse Lüder}
+\institute{HAW Hamburg Department Informatik}
+\date{\today}
+% The logo will be displayed in the bottom right corner. The size should remain unchaged.
+% If you do not wish to have the logo on your slides, comment the line.
+\logo{\mbox{\includegraphics[height=5mm]{hawLogoTemporary.png}}}
+
+\begin{document}
+
+% For now, using \titlepage in the first frame, does not work.
+% Use the following block (unchanged)
+{
+	\setbeamertemplate{footline}{}
+	\setbeamertemplate{sidebar right}{}
+	\setbeamercolor{background canvas}{bg=HAW main blue}
+	\maketitle
+}
+
+\begin{frame}{Inhalt}
+\tableofcontents
+\end{frame}
+
+% If you want some slides, for example the table of contents, at the beginning
+% of every section, use this command
+\AtBeginSection[] % Do nothing for \section*
+{
+	\begin{frame}
+		\frametitle{Kapitelübersicht}
+		\tableofcontents[currentsection] % the current section is set normal, the other ones are greyed out a bit
+	\end{frame}
+}
+
+\section{Farben}
+\begin{frame}
+\frametitle{Farben}
+\begin{tikzpicture}
+\fill [fill=HAW main blue] (0mm,40mm) rectangle (40mm,50mm);
+\node [anchor= west, color=HAW main blue] (main blue) at (40mm,45mm) {HAW Hauptblau (RGB 0/60/160)};
+\fill [fill=HAW mean blue] (0mm,20mm) rectangle (40mm,30mm);
+\node [anchor= west, color=HAW mean blue] (mean blue) at (40mm,25mm) {HAW Mittelblau (RGB 0/150/210)};
+\fill [fill=HAW light blue] (0mm,0mm) rectangle (40mm,10mm);
+\node [anchor= west, color=HAW light blue] (light blue) at (40mm,05mm) {HAW Hellblau (RGB 160/190/220)};
+\end{tikzpicture}
+
+\end{frame}
+
+\section{Zweites Kapitel}
+\subsection{Zweites Kapitel Teil eins}
+
+\begin{frame}
+\frametitle{Das zweite Kapitel beginnt...}
+Mehr Inhalt%
+% With \only (and some other commands) you can uncover the contents of a slide step by step. An important difference between \only and \uncover is that text that is hidden takes no space with \only.
+% You will notice that the position of the first part changes when the second part is added.
+\only<2-3>{, der sich langsam aufblättert}%
+\only<4>{, der sich ändert} % but only with \only you can do things like this
+\end{frame}
+
+\begin{frame}
+\frametitle{Das zweite Kapitel ist in vollem Gange...}
+Mehr Inhalt%
+% Now the first part is fixed.
+\uncover<2-3>{, der sich langsam aufblättert}%
+\uncover<4>{, der sich ändert} % but this does not really work with uncover
+\end{frame}
+
+\begin{frame}{Das zweite Kapitel endet...}
+Noch mehr Inhalt...
+\pause
+
+... Schluss!
+\end{frame}
+
+\begin{frame}[<+->]{Aufklappen mit unfold und default}
+\begin{enumerate}
+\item Eins
+\item Zwei
+\end{enumerate}
+\begin{proof}
+	qed
+\end{proof}
+\end{frame}
+
+\subsection{Zweites Kapitel Teil zwei}
+
+\begin{frame}{Aufzählungen}
+\begin{itemize}
+\item Wichtiger Punkt
+\item Noch einer
+\end{itemize}
+\begin{enumerate}
+\item Erstens
+\item und zweitens
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Fußnoten}
+Text \footnote{mit Fußnote}
+\end{frame}
+
+\begin{frame}{Fußnoten}
+Text \footnote{mit Fußnote} und \footnote{noch einer}
+
+% only one Footnote allowed at this moment (issue #1)
+%Noch eine \footnote{weitere Fußnote}
+\end{frame}
+
+\begin{frame}{Blocks}
+\begin{block}{Blocktitel}
+Blockinhalt
+\begin{enumerate}
+\item Mit einer Enumerierung
+\item aus zwei Einträgen.
+\end{enumerate}
+\end{block}
+Nach dem Block
+\end{frame}
+
+\begin{frame}{Beweis}
+\begin{proof}[Überschrift]
+Intelligenter Text
+\end{proof}
+\end{frame}
+
+\begin{frame}{Beispiel}
+\begin{exampleblock}{Beispiel}
+Beispiel
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Alarmblock}
+\begin{alertblock}{Alarm}
+Alarm!
+\end{alertblock}
+\end{frame}
+
+% If you specifiy allowframebreaks, beamer will spread your content over more
+% than one frame and add numbers to the title.
+\begin{frame}[allowframebreaks]{Viel Text}
+\Large
+\begin{enumerate}
+\item Wie
+\item viele
+\item Einträge
+\item sind
+\item nötig?
+\item Mit
+\item "`Large"'
+\item sind
+\item es
+\item zehn.
+\end{enumerate}
+\end{frame}
+
+% Of cource, references can also be used here (although they should be used with care)
+\begin{frame}{Referenz}
+\autocite{beamer}
+\footcite{beamer}
+\end{frame}
+
+\begin{frame}{Literatur}
+\printbibliography
+\end{frame}
+
+% A slide like this is not necessarily a good idea, depending on the type of presentation. It is, however, a classical finish for a ordinary presentations and it is included in the original presentation master.
+\closingframe
+
+\end{document}
